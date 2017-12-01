@@ -109,7 +109,7 @@ class ProgressiveManager {
 
         hire ( employee ) {
             this.reports.push( employee )
-
+            
             if ( this.reports.length === 0 ) { 
                 this.title =  'Not a manager'
              } else if ( this.reports.length >= 1 && this.reports.length <= 3 ) { 
@@ -151,7 +151,7 @@ It can :
     : This function sets needs_reboot to true
 - reboot
     : This function returns a function that is called when the machine is done rebooting
-      It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
+      It should decrease wear_and_tear_count by 10, and set needs_reboot to false
 
 */
 
@@ -173,8 +173,9 @@ class Machine {
     }
 
     reboot () {
-        return function () {
-
+        return () => {
+            this.wear_and_tear_count -= 10
+            this.needs_reboot = false
         }
     }
 }
